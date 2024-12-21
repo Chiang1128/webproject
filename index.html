@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAI</title>
+    <link rel="stylesheet" href="./WEBCSS.css">
+</head>
+<body>
+    <video id="video-bg" src="theme_video.mp4" autoplay loop muted></video>
+    <button class="Video" onclick="playpause()">播放/暫停</button>
+
+    <nav>   
+        <h1>......</h1>
+        <ul>
+            <li><a href="">首頁</a></li>
+            <li><a href="">介紹</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="welcome-text">
+            <h1></h1>
+        </div>
+        <div class="search-container">
+            <p class="search-text">台灣景點走透透!</p>
+            <input type="text" id="userInput" placeholder="請輸入縣市ex:基隆市">
+            <button id="plan">搜尋</button>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="carousel-container">
+            <button class="carousel-arrow left" onclick="prevSlide()">&#9664;</button>
+            <div class="carousel-track">
+                <!-- 第 1 項 -->
+                <div class="carousel-item">
+                    <div class="content-text">
+                        <h1>北部地區</h1>
+                        <p>
+                            「北部地區」包括臺北市、新北市、基隆市、宜蘭縣、桃園市、新竹縣及新竹市,
+                            共計7個縣市。您可以從臺灣最高樓——臺北101俯瞰臺北美景；前往故宮博物院一窺歷史典藏文物瑰寶。
+                        </p>
+                    </div>
+                    <img src="taiwanMap_north.png" alt="北部地區">
+                </div>
+    
+                <!-- 第 2 項 -->
+                <div class="carousel-item">
+                    <div class="content-text">
+                        <h1>中部地區</h1>
+                        <p>
+                            「中部地區」包括苗栗縣、臺中市、彰化縣、南投縣及雲林縣等5個縣市,
+                            位於臺灣心臟地帶，常年氣候舒適，尤其是臺中市，四季氣溫宜人，
+                            非常適合旅行。中部地區擁有多處老少皆宜的渡假村及遊樂中心，
+                            包含苗栗西湖渡假村、臺中麗寶樂園、南投泰雅渡假村、九族文化村及雲林劍湖山世界等。
+                            喜歡文藝的朋友們不可錯過苗栗的木雕與燒陶藝術,可自己動手DIY實作體驗一番，
+                            臺中市國立臺灣美術館與自然科學博物館推薦遊客進入細細參觀，
+                            雲林縣是揚名世界的布袋戲演藝文化發源地，值得深入欣賞。
+                        </p>
+                    </div>
+                    <img src="taiwanMap_center.png" alt="中部地區">
+                </div>
+    
+                <!-- 第 3 項 -->
+                <div class="carousel-item">
+                    <div class="content-text">
+                        <h1>南部地區</h1>
+                        <p>
+                            「南部地區」包括臺南市、高雄市、屏東縣等地，熱鬧的夜市與古蹟文化著稱。
+                        </p>
+                    </div>
+                    <img src="taiwanMap_south.png" alt="南部地區">
+                </div>
+    
+                <!-- 第 4 項 -->
+                <div class="carousel-item">
+                    <div class="content-text">
+                        <h1>東部地區</h1>
+                        <p>
+                            「東部地區」包括花蓮縣、臺東縣，太魯閣與花東縱谷是著名的自然景觀。
+                        </p>
+                    </div>
+                    <img src="taiwanMap_east.png" alt="東部地區">
+                </div>
+    
+                <!-- 第 5 項 -->
+                <div class="carousel-item">
+                    <div class="content-text">
+                        <h1>離島地區</h1>
+                        <p>
+                            包括如澎湖、金門與馬祖，擁有獨特的自然風光與文化。
+                        </p>
+                    </div>
+                    <img src="taiwanMap_other.png" alt="其他地區">
+                </div>
+            </div>
+            <button class="carousel-arrow right" onclick="nextSlide()">&#9654;</button>
+        </div>
+    </section>
+    
+
+    <section class="content2">
+        <img src="image2.png" alt="Image2">
+        <p>計畫自己的旅遊行程<br>我們的網站<br>幫您更方便的計畫<br>您的旅遊行程</p>
+    </section>
+
+    <script>
+        let currentIndex = 0; // 當前索引
+
+        function showSlide(index) {
+            const track = document.querySelector('.carousel-track');
+            const totalSlides = document.querySelectorAll('.carousel-item').length;
+        
+            // 確保索引在範圍內循環
+            if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+        
+            // 計算並移動輪播軌道
+            const offset = -currentIndex * 100; // 每個項目寬度為 100%
+            track.style.transform = `translateX(${offset}%)`;
+        }
+        
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+        
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+        
+        // 初始化顯示第一項
+        showSlide(currentIndex);
+        function playpause()
+        {
+            const vdo = document.getElementById('video-bg');
+            if (vdo.paused) {
+                vdo.play();
+            } else {
+                vdo.pause();
+            }
+        }
+        function addWindow() 
+        {
+            myWindow = window.open("http://127.0.0.1:5501/subweb.html", "_blank");
+        }
+        let PlanButton = document.getElementById("plan");
+        PlanButton.addEventListener("click", addWindow,false);
+    </script>
+
+</body>
+</html>
