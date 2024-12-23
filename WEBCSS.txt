@@ -1,0 +1,247 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+.Video{
+    position: absolute;
+    top: 600px;
+    left: 100px;
+    font-size: 16px;
+    
+    color: white; /* 字体颜色 */
+    cursor: pointer; 
+}
+#video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    top: 0;
+    z-index: 1000; /* 确保导航栏在视频上方 */
+}
+nav h1 {
+    margin: 0;
+    font-size: 24px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    margin: 0 25px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+nav ul li a:hover {
+    text-decoration: underline;
+    color: gray;
+}
+.vertical-text {
+    writing-mode: vertical-rl; /* 竖排，从右向左 */
+    text-orientation: upright; /* 字体方向直立 */
+    font-size: 24px; /* 字体大小 */
+    line-height: 2; /* 行距，确保文字间距合适 */
+    color: white; /* 字体颜色 */
+    text-align: center; /* 水平居中对齐 */
+    margin: 0 auto; /* 居中定位 */
+}
+.welcome-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    text-align: center;
+    z-index: 100;
+    position: relative;
+}
+.welcome-text h1 {
+    font-size: 48px;
+    margin: 0;
+}
+.search-container {
+    position: absolute;
+    top: 200px;
+    right: 150px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 180px;
+    z-index: 100;
+}
+.search-container input[type="text"] {
+    width: 250px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 18px;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+.search-container input[type="text"]:focus {
+    border: 2px dashed blue;
+    box-shadow: 0 0 8px rgba(0, 0, 255, 0.8);
+}
+.search-container button {
+    padding: 8px 16px;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+.search-container button:hover {
+    border: 2px dashed blue;
+    box-shadow: 0 0 8px rgba(0, 0, 255, 0.8);
+}
+.search-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff8c00;
+}
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    
+    font-size: 36px;
+}
+.content {
+    background-color: white; /* 背景顏色 */
+    color: black; /* 文字顏色 */
+    display: flex;
+    justify-content: space-between; /* 左右分佈 */
+    align-items: center; /* 垂直居中 */
+    padding: 50px; /* 內邊距 */
+    height: 100vh; /* 區塊高度 */
+    box-sizing: border-box; /* 包括邊框和內邊距 */
+}
+.content-text {
+    width: 50%; /* 左側內容區域寬度 */
+    text-align: left; /* 左對齊文字 */
+    font-size: 18px; /* 字體大小 */
+    line-height: 1.8; /* 行間距 */
+    font-family: 'Arial', sans-serif; /* 字體 */
+}
+.content img {
+    width: 40%; /* 右側圖片寬度 */
+    height: 500px;/* 最大高度限制 */
+    object-fit: contain; /* 保持圖片比例 */
+}
+
+.content2 {
+    background-color: #eff6f9;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #000000;
+}
+img {
+    max-width: 600px;
+    max-height: 600px;
+    overflow: hidden;
+}
+.Video{
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+.carousel-container {
+    position: relative;
+    width: 80%; /* 根據需求調整寬度 */
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* 輪播軌道 */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* 平滑過渡效果 */
+}
+
+/* 輪播項目（圖片 + 文字） */
+.carousel-item {
+    min-width: 100%; /* 每一項佔滿容器 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 文字區域 */
+.content-text {
+    width: 50%;
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.content-text h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+/* 圖片區域 */
+.carousel-item img {
+    width: 45%;
+    border-radius: 10px;
+}
+
+/* 箭頭樣式 */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.carousel-arrow.left {
+    left: 5px;
+}
+
+.carousel-arrow.right {
+    right: 50px;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
