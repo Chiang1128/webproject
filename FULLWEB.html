@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台灣觀光介紹網</title>
+    <link rel="stylesheet" href="./WEBCSS.css">
+</head>
+<body>
+    <video id="video-bg" src="theme_video.mp4" autoplay loop muted></video>
+    <button class="Video" onclick="playpause()">播放/暫停</button>
+
+    <nav>   
+        <p><img src="taiwan_logo.png" class="logo"></p>
+        <ul>
+            <li><a href="">首頁</a></li>
+            <li><a href="">專案下載</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="search-container">
+            <p class="search-text">台灣景點走透透!</p>
+            <input type="text" id="userInput" placeholder="請輸入縣市ex:基隆市">
+            <button id="plan">搜尋</button>
+        </div>
+    </section>
+
+    <section class="intro-section" style="background-color: #1b1e38; color: white; text-align: center; padding: 50px 0;">
+        <div class="intro-content">
+            <h1 class="vertical-text">臺灣事</h1>
+            <p class="vertical-text">
+                瀏覽臺灣大小事<br>
+                即時熱訊不遺漏<br>
+                與你一同聚焦<br>
+                城市觀光快報
+            </p>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="carousel-container">
+            <button class="carousel-arrow left" onclick="prevSlide()">&#9664;</button>
+            <div class="carousel-track">
+                <div class="carousel-item">
+                    <div class="content-text">
+                        <h1>北部地區</h1>
+                        <p>
+                            「北部地區」包括臺北市、新北市、基隆市、宜蘭縣、桃園市、新竹縣及新竹市,
+                            共計7個縣市。您可以從臺灣最高樓——臺北101俯瞰臺北美景；前往故宮博物院一窺歷史典藏文物瑰寶。
+                        </p>
+                    </div>
+                    <img src="/taiwanMap/taiwanMap_north.png" alt="北部地區">
+                </div>
+    
+                <div class="carousel-item">
+                    <div class="content-text">
+                        <h1>中部地區</h1>
+                        <p>
+                            「中部地區」包括苗栗縣、臺中市、彰化縣、南投縣及雲林縣等5個縣市,
+                            位於臺灣心臟地帶，常年氣候舒適，尤其是臺中市，四季氣溫宜人，
+                            非常適合旅行。中部地區擁有多處老少皆宜的渡假村及遊樂中心，
+                            包含苗栗西湖渡假村、臺中麗寶樂園、南投泰雅渡假村、九族文化村及雲林劍湖山世界等。
+                            喜歡文藝的朋友們不可錯過苗栗的木雕與燒陶藝術,可自己動手DIY實作體驗一番，
+                            臺中市國立臺灣美術館與自然科學博物館推薦遊客進入細細參觀，
+                            雲林縣是揚名世界的布袋戲演藝文化發源地，值得深入欣賞。
+                        </p>
+                    </div>
+                    <img src="/taiwanMap/taiwanMap_center.png" alt="中部地區">
+                </div>
+    
+                <div class="carousel-item">
+                    <div class="content-text">
+                        <h1>南部地區</h1>
+                        <p>
+                            臺灣南部地區散發著濃厚的歷史文化，臺南市是全臺歷史最悠久的文化古都，
+                            十九世紀末期前，臺南一直是臺灣政治經濟文化重心，古蹟名勝特別多。
+                            嘉義縣因北回歸線通過而建造的「北回歸線天文廣場」，呈現北回歸線的地理象徵。
+                            阿里山森林遊樂區舉世聞名，高山森林鐵路及深藏不露的林間古道，
+                            吸引大批國內外遊客造訪，而阿里山雲海、日出、晚霞等自然美景，遠近馳名，
+                            是旅遊臺灣必遊的重點景點之一。
+                        </p>
+                    </div>
+                    <img src="/taiwanMap/taiwanMap_south.png" alt="南部地區">
+                </div>
+    
+                <div class="carousel-item">
+                    <div class="content-text">
+                        <h1>東部地區</h1>
+                        <p>
+                            臺灣東部地區包含花蓮縣及臺東縣2個縣市，東臨浩瀚太平洋，
+                            西倚中央山脈，擁有臨山面海的優越地理位置，最初葡萄牙人航行經過臺灣東部海岸時，
+                            看見壯麗的山川美景呈現於眼前，驚呼「FORMOSA」（美極了），
+                            臺灣「福爾摩沙」的稱號由此而來，東部極致的天然美景也由此可見。
+                            東部地區擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，
+                            是臺灣的「後花園」，非常適合慢活養生之旅，行走在這塊淨土上，
+                            放慢你的呼吸頻率，大口吸入甜甜的空氣香，long stay是最好的行程安排。
+                        </p>
+                    </div>
+                    <img src="/taiwanMap/taiwanMap_east.png" alt="東部地區">
+                </div>
+    
+                <div class="carousel-item">
+                    <div class="content-text">
+                        <h1>離島地區</h1>
+                        <p>
+                            臺灣主要島嶼之外，周邊的小島也為數可觀，澎湖、金門與連江三個縣市位於離島地區，
+                            原本曾神秘的軍事管制禁區——金門，開放觀光後成為熱絡的旅遊地區，
+                            具鄉土風味的金門特產三寶，鋼刀、貢糖、高粱酒，總讓人滿載而歸，而馬祖的老酒、
+                            八八坑道高粱、大麯酒，更令人齒頰留香。既是外島，各樣生鮮美饌種類繁多，
+                            讓遊客得以飽嘗頂級海鮮美味。澎湖，春夏花火節火樹銀花綻放熱情和浪漫，
+                            碧海藍天與柔白細緻沙灘的雙重享受，加上各式各樣的新潮有趣的沙灘水上遊樂設施，
+                            讓你盡情的享受水上世界。
+                        </p>
+                    </div>
+                    <img src="/taiwanMap/taiwanMap_other.png" alt="其他地區">
+                </div>
+            </div>
+            <button class="carousel-arrow right" onclick="nextSlide()">&#9654;</button>
+        </div>
+    </section>
+    
+
+    <section class="content2">
+        <img src="image2.png" alt="Image2">
+        <p>想像自己的旅遊景點<br>我們的網站<br>幫您更方便的查詢<br>您的旅遊景點</p>
+    </section>
+
+    <script>
+        let currentIndex = 0; // 當前索引
+
+        function showSlide(index) {
+            const track = document.querySelector('.carousel-track');
+            const totalSlides = document.querySelectorAll('.carousel-item').length;
+        
+            // 確保索引在範圍內循環
+            if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+        
+            // 計算並移動輪播軌道
+            const offset = -currentIndex * 100; // 每個項目寬度為 100%
+            track.style.transform = `translateX(${offset}%)`;
+        }
+        
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+        
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+        
+        // 初始化顯示第一項
+        showSlide(currentIndex);
+        function playpause()
+        {
+            const vdo = document.getElementById('video-bg');
+            if (vdo.paused) {
+                vdo.play();
+            } else {
+                vdo.pause();
+            }
+        }
+        function addWindow() 
+        {
+            myWindow = window.open("http://127.0.0.1:5501/subweb.html", "_blank");
+        }
+        let PlanButton = document.getElementById("plan");
+        PlanButton.addEventListener("click", addWindow,false);
+    </script>
+
+</body>
+</html>

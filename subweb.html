@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sub_台灣觀光介紹網</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        #content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-left: auto;
+            margin-right: auto;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .card {
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 300px;
+            height: 320px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .card div {
+            padding: 10px;
+        }
+        .card h3 {
+            margin: 0 0 10px;
+        }
+        .card .hashtags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .card .hashtags {
+            display: inline-block;
+            background-color: #c0c0c0;
+            color: black;
+            padding: 3px 8px;
+            margin: 2px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .card .hashtags:hover {
+            color: blue;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            position: fixed;
+            width: 100%;
+            height: 40px;
+            top: 0;
+            z-index: 1000;
+        }
+        nav h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 25px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="city-text"></h1>
+    <nav>
+        <h1>TAIWAN</h1>
+        <ul>
+            <li><a href="FULLWEB.html">首頁</a></li>
+            <li><a href="">專案下載</a></li>
+        </ul>
+    </nav>
+    <div id="content"></div>
+    <div id="spot-detail"></div>
+    <script>
+        const cityImages = {
+            "臺北市": "/rigion-city/臺北市.jpg",
+            "新北市": "/rigion-city/新北市.jpg",
+            "桃園市": "/rigion-city/桃園.jpg",
+            "新竹市": "/rigion-city/新竹市.jpg",
+            "宜蘭縣": "/rigion-city/宜蘭.jpg",
+            "苗栗縣": "/rigion-city/苗栗.jpg",
+            "新竹縣": "/rigion-city/新竹.jpg",
+            "基隆市": "/rigion-city/基隆.jpg",
+            "臺中市": "/rigion-city/臺中.jpg",
+            "彰化縣": "/rigion-city/彰化.jpg",
+            "南投縣": "/rigion-city/南投.jpg",
+            "雲林縣": "/rigion-city/雲林.jpg",
+            "嘉義市": "/rigion-city/嘉義市.jpg",
+            "嘉義縣": "/rigion-city/嘉義縣.jpg",
+            "臺南市": "/rigion-city/台南.jpg",
+            "高雄市": "/rigion-city/高雄.jpg",
+            "屏東縣": "/rigion-city/屏東.jpg",
+            "花蓮縣": "/rigion-city/花蓮.jpg",
+            "臺東縣": "/rigion-city/臺東.jpg",
+            "澎湖縣": "/rigion-city/澎湖.jpg",
+            "金門縣": "/rigion-city/金門.jpg",
+            "連江縣(馬祖)": "/rigion-city/連江.jpg",
+        };
+
+        if (window.opener) {
+            const inputValue = window.opener.document.getElementById('userInput').value;
+            document.getElementById("city-text").innerText = `${inputValue}`;
+
+            const imageSrc = cityImages[inputValue];
+            const cityImage = document.createElement("img");
+            cityImage.src = imageSrc;
+            cityImage.style.width = "100%";
+            cityImage.style.height = "500px";
+            cityImage.style.marginBottom = "20px";
+            document.getElementById("content").appendChild(cityImage);
+
+            fetch('taiwan_all_regions.json')
+            .then(response => response.json())
+            .then(data => {
+                const contentContainer = document.getElementById("content");
+                // 遍歷所有地區的資料
+                data.forEach(region => {
+                    region.cities.forEach(city => {
+                        // 匹配輸入的城市
+                        if (city.city === inputValue) {
+                            city.spots.forEach(spot => {
+                                // 創建景點卡片
+                                let card = document.createElement("div");
+                                card.className = "card";
+                                card.innerHTML = `
+                                    <img src="${spot.images[0]}" alt="${spot.title}">
+                                    <div>
+                                        <h3>${spot.title}</h3>
+                                        <div class="hashtags-container">
+                                            ${spot.hashtags.map(tag => `<span class="hashtags">${tag}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                `;
+                                contentContainer.appendChild(card);
+
+                                // 點擊卡片時顯示詳細資訊
+                                card.addEventListener('click', () => {
+                                    const urlParams = new URLSearchParams({
+                                        title: spot.title,
+                                        description: spot.contents.join(' '),
+                                        image: spot.images
+                                    });
+                                    window.open(`detail.html?${urlParams.toString()}`, "_blank");
+                                });
+                            });
+                        }
+                    });
+                });
+            });
+        }
+    </script>
+</body>
+</html>
