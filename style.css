@@ -127,7 +127,7 @@ nav ul li a:hover {
     height: 180px;
     z-index: 100;
 }
-.search-container input[type="text"] {
+.search-container select {
     width: 250px;
     padding: 8px;
     border: 1px solid #ccc;
@@ -136,7 +136,7 @@ nav ul li a:hover {
     outline: none;
     transition: border 0.3s ease, box-shadow 0.3s ease;
 }
-.search-container input[type="text"]:focus {
+.search-container select:focus {
     border: 2px dashed blue;
     box-shadow: 0 0 8px rgba(0, 0, 255, 0.8);
 }
