@@ -20,7 +20,7 @@ const cityImages = {
   臺東縣: "rigion-city/臺東.jpg",
   澎湖縣: "rigion-city/澎湖.jpg",
   金門縣: "rigion-city/金門.jpg",
-  "連江縣(馬祖)": "rigion-city/連江.jpg",
+  連江縣: "rigion-city/連江.jpg",
 };
 
 if (window.opener) {
